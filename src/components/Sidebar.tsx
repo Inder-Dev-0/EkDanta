@@ -1,5 +1,122 @@
-import {LayoutDashboard,UploadCloud,Clock3,FileSearch,Users,Share2,ScanSearch,BrainCircuit,FileText,Home} from "lucide-react";
-import type {Page} from "../data";
-const iconMap:any={home:Home,new:UploadCloud,dashboard:LayoutDashboard,timeline:Clock3,evidence:FileSearch,entities:Users,graph:Share2,poi:ScanSearch,ai:BrainCircuit,report:FileText};
-const labels:any={home:"Home",new:"New Investigation",dashboard:"Dashboard",timeline:"Timeline",evidence:"Evidence",entities:"Entities",graph:"Connection Graph",poi:"Persons of Interest",ai:"AI Analysis",report:"Report"};
-export function Sidebar({active,onNavigate}:{active:Page;onNavigate:(p:Page)=>void}){return <aside className="sidebar"><div className="side-case"><div className="case-row"><b>The Midnight Leak</b><span>×</span></div><em>Investigating</em><p>Confidential document accessed and transferred to an external server.</p><div className="case-info">◷ Jan 14, 2024<br/>11:42 PM – 11:52 PM</div><div className="case-info">▣ PROJECT_ORION_INTERNAL_SPEC.pdf</div><div className="side-risk">△ <div><small>Risk Level</small><b>HIGH</b></div></div></div><div className="side-links">{Object.keys(labels).map(k=>{const I=iconMap[k];return <button key={k} className={active===k?"side-link active":"side-link"} onClick={()=>onNavigate(k as Page)}><I size={15}/>{labels[k]}</button>})}</div></aside>}
+import React from "react";
+import {
+  LayoutDashboard,
+  UploadCloud,
+  Clock3,
+  FileSearch,
+  Users,
+  Share2,
+  ScanSearch,
+  BrainCircuit,
+  FileText,
+  Home,
+  Settings,
+  ShieldAlert,
+  Server,
+  Activity
+} from "lucide-react";
+import type { Page } from "../data";
+import { activeCase } from "../data";
+
+interface SidebarProps {
+  active: Page;
+  onNavigate: (p: Page) => void;
+}
+
+const navItems: { id: Page; label: string; icon: React.ElementType }[] = [
+  { id: "dashboard", label: "Dashboard", icon: LayoutDashboard },
+  { id: "new", label: "New Case", icon: UploadCloud },
+  { id: "timeline", label: "Timeline", icon: Clock3 },
+  { id: "evidence", label: "Evidence Explorer", icon: FileSearch },
+  { id: "entities", label: "Entity Explorer", icon: Users },
+  { id: "graph", label: "Connection Graph", icon: Share2 },
+  { id: "poi", label: "Persons of Interest", icon: ScanSearch },
+  { id: "ai", label: "AI Analyst", icon: BrainCircuit },
+  { id: "report", label: "Investigation Report", icon: FileText },
+  { id: "settings", label: "System Settings", icon: Settings },
+];
+
+export function Sidebar({ active, onNavigate }: SidebarProps) {
+  return (
+    <aside className="sidebar">
+      {/* Active Case Docket */}
+      <div className="side-case-docket">
+        <div className="docket-header">
+          <span className="font-mono text-cyan text-xs">{activeCase.code}</span>
+          <span className="case-status-badge">[ {activeCase.status} ]</span>
+        </div>
+        <h4 className="docket-title">{activeCase.title}</h4>
+        <p className="docket-summary">{activeCase.summary.slice(0, 105)}...</p>
+
+        <div className="docket-meta">
+          <div className="docket-meta-row">
+            <span className="meta-icon">◷</span>
+            <span className="font-mono text-xs">{activeCase.incidentWindow.split(" · ")[1]}</span>
+          </div>
+          <div className="docket-meta-row">
+            <span className="meta-icon"><Server size={12} /></span>
+            <span className="font-mono text-xs">{activeCase.affectedAsset.split(" ")[0]}</span>
+          </div>
+        </div>
+
+        <div className="docket-risk-row">
+          <ShieldAlert size={14} className="text-danger" />
+          <div>
+            <span className="risk-label">RISK LEVEL</span>
+            <b className="risk-val text-danger">{activeCase.riskLevel}</b>
+          </div>
+        </div>
+      </div>
+
+      {/* Navigation Links */}
+      <div className="side-nav-group">
+        <span className="side-nav-heading">INVESTIGATION MODULES</span>
+        <div className="side-links">
+          {navItems.map((item) => {
+            const Icon = item.icon;
+            const isActive = active === item.id;
+            return (
+              <button
+                key={item.id}
+                className={`side-link ${isActive ? "active" : ""}`}
+                onClick={() => onNavigate(item.id)}
+              >
+                <Icon size={15} className="side-link-icon" />
+                <span className="side-link-label">{item.label}</span>
+                {isActive && <span className="side-active-dot" />}
+              </button>
+            );
+          })}
+        </div>
+      </div>
+
+      {/* Section 25: Technical Status Elements */}
+      <div className="side-system-telemetry">
+        <div className="system-status-row">
+          <span className="status-label">SYSTEM STATUS</span>
+          <span className="status-indicator online">
+            <span className="dot" /> ONLINE
+          </span>
+        </div>
+        <div className="system-status-row">
+          <span className="status-label">GRAPH ENGINE</span>
+          <span className="status-indicator online">
+            <span className="dot" /> ACTIVE
+          </span>
+        </div>
+        <div className="system-status-row">
+          <span className="status-label">EVIDENCE INDEX</span>
+          <span className="status-indicator font-mono">
+            47 ITEMS
+          </span>
+        </div>
+        <div className="system-status-row">
+          <span className="status-label">AI ANALYST</span>
+          <span className="status-indicator online">
+            <span className="dot" /> READY
+          </span>
+        </div>
+      </div>
+    </aside>
+  );
+}
