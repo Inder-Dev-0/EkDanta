@@ -1,0 +1,23 @@
+.graph-section .network-canvas{position:absolute;inset:0;z-index:1;display:block;outline:none}
+.graph-section.embedded{position:absolute;inset:0;z-index:1;border:0;border-radius:inherit;background:transparent;box-shadow:none;overflow:hidden}
+.graph-section.embedded .graph-head{display:none}
+.graph-section.embedded .graph-stage{height:100%;border-radius:inherit;background:transparent}
+.graph-section .graph-analysis-card{position:absolute;z-index:5;top:14px;right:14px;width:min(320px,calc(100% - 28px));max-height:calc(100% - 28px);overflow:auto;padding:17px 16px 13px;border:1px solid #1c5871;border-radius:9px;background:rgba(5,13,24,.92);color:#e7f2ff;box-shadow:0 16px 54px #000b,inset 0 1px #73e4ff16;backdrop-filter:blur(18px)}
+.graph-section .graph-card-close{position:absolute;top:10px;right:10px;width:27px;height:27px;display:grid;place-items:center;border:1px solid #ffffff1a;border-radius:5px;background:#ffffff08;color:#9db1c4}
+.graph-section .graph-card-close:hover{color:#fff;background:#ffffff12}
+.graph-section .graph-card-kicker{margin:0 32px 7px 0;color:#53d9f4;font-size:8px;font-weight:700;letter-spacing:1px}
+.graph-section .graph-analysis-card h3{margin:0 28px 13px 0;color:#f0f8ff;font-size:14px;line-height:1.4;overflow-wrap:anywhere}
+.graph-section .graph-analysis-card dl{display:grid;gap:0;margin:0}
+.graph-section .graph-analysis-card dl>div{display:grid;grid-template-columns:112px minmax(0,1fr);gap:8px;align-items:start;padding:9px 0;border-top:1px solid #ffffff10}
+.graph-section .graph-analysis-card dt{color:#8098ac;font-size:8px;line-height:1.45}
+.graph-section .graph-analysis-card dd{margin:0;color:#d6e6f2;font-size:9px;line-height:1.45;overflow-wrap:anywhere}
+.graph-section .graph-analysis-card dd>i{display:inline-block;width:7px;height:7px;margin:0 6px 1px 0;border-radius:50%;vertical-align:middle;box-shadow:0 0 9px currentColor}
+.graph-section .graph-threat{display:inline-block;padding:3px 6px;border:1px solid;border-radius:4px;font-size:8px;font-weight:600}
+.graph-section .graph-threat.high{color:#ff637a;border-color:#ff637a55;background:#ff335f14}
+.graph-section .graph-threat.elevated{color:#ffc65b;border-color:#ffc65b55;background:#ffb52d12}
+.graph-section .graph-threat.guarded{color:#55d9f0;border-color:#55d9f055;background:#17d7ff10}
+.graph-section .graph-threat.low{color:#52d59d;border-color:#52d59d55;background:#1dd5a210}
+.graph-section .graph-node-count{position:absolute;z-index:2;left:15px;bottom:13px;color:#7890aa;font-family:"JetBrains Mono",monospace;font-size:7px;letter-spacing:.5px;pointer-events:none}
+.graph-section .graph-node-count i{display:inline-block;width:4px;height:4px;margin:0 6px 1px;border-radius:50%;background:#38d5ef;box-shadow:0 0 8px #38d5ef}
+@media(max-width:1100px){.graph-section .graph-head-right{display:flex}}
+@media(max-width:760px){.graph-section .graph-head{flex-wrap:wrap;gap:8px}.graph-section .graph-head-right{width:100%;justify-content:space-between;gap:8px}.graph-section .graph-legend{justify-content:flex-start;gap:6px}.graph-section .mini-search{min-width:115px;flex:1}.graph-section .graph-analysis-card{top:auto;right:10px;bottom:10px;width:min(310px,calc(100% - 20px));max-height:245px}.graph-section .graph-node-count{bottom:12px;left:12px}}

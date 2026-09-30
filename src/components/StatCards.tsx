@@ -1,0 +1,2 @@
+import {FileSearch,Users,Share2,ShieldAlert} from "lucide-react";
+export function StatCards(){const a=[["47","Evidence Items",FileSearch],["12","Entities",Users],["8","Relationships",Share2],["3","Persons of Interest",ShieldAlert]];return <div className="stats">{a.map(([n,l,I]:any)=><div className="stat-card" key={l}><I size={18}/><div><small>{l}</small><b>{n}</b></div></div>)}</div>}

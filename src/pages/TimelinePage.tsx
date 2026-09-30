@@ -1,0 +1,2 @@
+import {TimelinePanel} from "../components/TimelinePanel";
+export function TimelinePage(){return <main className="page inner-page"><div className="page-title"><span className="eyebrow">CASE TIMELINE</span><h1>Reconstructed Timeline</h1><p>Events are presented by incident time rather than document order.</p></div><TimelinePanel/><div className="info-strip">Tip: selecting an event in the connected frontend can later focus the graph on its related entities.</div></main>}

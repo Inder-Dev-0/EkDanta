@@ -1,0 +1,2 @@
+import { ShieldCheck } from "lucide-react";
+export function Brand(){return <div className="brand"><div className="brand-logo"><ShieldCheck size={22}/></div><div><b>EKDANTA</b><span>Digital Crime Scene Investigator</span></div></div>}

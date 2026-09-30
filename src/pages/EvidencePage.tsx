@@ -1,0 +1,2 @@
+import {EvidencePanel} from "../components/EvidencePanel";
+export function EvidencePage(){return <main className="page inner-page"><div className="page-title"><span className="eyebrow">EVIDENCE EXPLORER</span><h1>Evidence & Classifications</h1><p>Inspect extracted events, classifications and connected entities.</p></div><EvidencePanel/></main>}
